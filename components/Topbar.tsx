@@ -23,7 +23,11 @@ const Topbar = () => {
             <Button variant="soft">{true ? "Светлая" : "Тёмная"}</Button>
             <Button variant="ghost"><Bell className="h-5 w-5"/></Button>
             <Button variant="primary"><Plus className="h-4 w-4"/> Заказ</Button>
-            <Button variant="danger" onClick={() => { setLoggedIn(true); }}><LogIn className="h-4 w-4"/><Link href="/sign-in" > Войти</Link></Button>
+            <Button asChild variant="soft" size="md">
+              <Link href="/sign-in" onClick={() => { setLoggedIn(true); }}>
+                <LogIn className="h-4 w-4" /> Войти
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
