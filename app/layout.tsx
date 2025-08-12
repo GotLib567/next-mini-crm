@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Button from "@/components/ui/button";
+import Input from "@/components/ui/input";
+import {Bell, LogOut, Plus, Search} from "lucide-react";
+import Sidebar from "@/components/Sidebar";
+import Topbar from "@/components/Topbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +32,26 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className={`${true ? "dark" : ""} min-h-screen bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100`}>
+          <Topbar />
+
+          <div className="mx-auto max-w-7xl px-4">
+            <div className="grid grid-cols-12 gap-6 py-6">
+              {/* Nav rail */}
+              <aside className="col-span-12 md:col-span-3 lg:col-span-2">
+                <Sidebar />
+              </aside>
+
+              {/* Content */}
+              <main className="col-span-12 md:col-span-9 lg:col-span-10">
+                {children}
+              </main>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="border-t border-neutral-200 dark:border-neutral-800 py-6 text-center text-xs text-neutral-500">v1 • Дизайн‑прототип без бэкенда</div>
+        </div>
       </body>
     </html>
   );
