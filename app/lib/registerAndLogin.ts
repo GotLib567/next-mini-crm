@@ -2,7 +2,7 @@ async function registerAndLogin(payload: {
   first_name: string; last_name: string; email: string;
   phone: string; password: string; role: string;
 }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL ?? process.env.API_BASE_URL}/auth/register`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL ?? process.env.API_BASE_URL}/api/v1/auth/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
