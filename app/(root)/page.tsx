@@ -1,14 +1,33 @@
 'use client';
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import Button from "@/components/ui/button";
-import {chartData, kpis, materials, notifications} from "@/constants";
+import {chartData, kpis, notifications, services} from "@/constants";
 import Badge from "@/components/ui/badge";
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import { motion } from "framer-motion";
+import {Building2, PenLine} from "lucide-react";
 
 export default function Home() {
   return (
     <div className="space-y-6">
+      <Card>
+        <CardContent>
+          <div className="flex items-center justify-between">
+            <div className="flex flex-col items-center md:flex-row gap-2 md:gap-4">
+              <Building2 className="h-20 w-20" />
+              <div>
+                <div className="md:flex md:items-center md:gap-2">
+                  <div className="text-xl font-bold">Барбершоп Центр</div>
+                  <div className="text-sm text-neutral-500">Адрес: ул. Ленина, д. 2</div>
+                </div>
+                <div className="max-sm:mt-2 text-sm leading-4">Длинное описание про то, насколько хорош этот барбершоп, еще длиннее, more length of text. Хороший барбершоп.</div>
+              </div>
+            </div>
+            <Button className="max-sm:hidden"><PenLine /></Button>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* KPI */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         {kpis.map((k, i) => (
@@ -71,11 +90,11 @@ export default function Home() {
         <CardHeader title="Низкие остатки" subtitle="Материалы ниже порога" />
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {materials.filter(m => m.stock < m.threshold).map((m, i) => (
+            {services.filter(s => s.stock < s.threshold).map((s, i) => (
               <div key={i} className="flex items-center justify-between rounded-xl border border-neutral-200 dark:border-neutral-800 p-3">
                 <div>
-                  <div className="font-medium">{m.name}</div>
-                  <div className="text-xs text-neutral-500">Остаток: {m.stock} {m.unit} • Порог: {m.threshold}</div>
+                  <div className="font-medium">{s.name}</div>
+                  <div className="text-xs text-neutral-500">Остаток: {s.stock} {s.unit} • Порог: {s.threshold}</div>
                 </div>
                 <Badge tone="warning">Пополнить</Badge>
               </div>

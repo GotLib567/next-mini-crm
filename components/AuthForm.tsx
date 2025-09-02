@@ -22,7 +22,7 @@ const AuthForm = ({ pageType = "register" }: { pageType: PageType }) => {
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [phone, setPhone] = React.useState("");
-  const [role, setRole] = React.useState("USER"); // ваш бэк требует role — оставил дефолт
+  const [role, setRole] = React.useState("MASTER");
 
   const [err, setErr] = React.useState<string>("");
   const [loading, setLoading] = React.useState(false);
