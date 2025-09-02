@@ -1,11 +1,13 @@
 'use client';
 import React, {useState} from 'react';
 import Input from "@/components/ui/input";
-import {Bell, LogIn, Plus, Search} from "lucide-react";
+import {Bell, LogIn, LogOut, Plus, Search} from "lucide-react";
 import Button from "@/components/ui/button";
 import Link from "next/link";
+import {signOut, useSession} from "next-auth/react";
 
 const Topbar = () => {
+  const { data: session, status } = useSession();
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
@@ -23,11 +25,22 @@ const Topbar = () => {
             <Button variant="soft">{true ? "Светлая" : "Тёмная"}</Button>
             <Button variant="ghost"><Bell className="h-5 w-5"/></Button>
             <Button variant="primary"><Plus className="h-4 w-4"/> Заказ</Button>
-            <Button asChild variant="soft" size="md">
-              <Link href="/sign-in" onClick={() => { setLoggedIn(true); }}>
-                <LogIn className="h-4 w-4" /> Войти
-              </Link>
-            </Button>
+            <div>
+              {status === "authenticated" ? (
+                <div className="flex items-center gap-2">
+                  <span>{session?.user?.first_name}</span>
+                  <Button variant="soft" className="cursor-pointer" onClick={() => signOut()} size="md">
+                      <LogOut className="h-4 w-4" />
+                  </Button>
+                </div>
+              ) : (
+                <Button asChild variant="soft" size="md">
+                  <Link href="/login" onClick={() => { setLoggedIn(true); }}>
+                    <LogIn className="h-4 w-4" /> Войти
+                  </Link>
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </div>
