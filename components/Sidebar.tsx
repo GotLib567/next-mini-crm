@@ -3,15 +3,17 @@ import React, {useState} from 'react';
 import {NAV} from "@/constants";
 import Link from "next/link";
 import {cn} from "@/lib/utils";
+import {useParams, useRouter} from "next/navigation";
 
 const Sidebar = () => {
   const [active, setActive] = useState("dashboard");
+  const { companyId } = useParams<{ companyId: string }>();
 
   return (
     <nav className="space-y-1">
       {NAV.map((item) => (
         <Link
-          href={item.id === "dashboard" ? "/" : `/${item.id}`}
+          href={item.id === "dashboard" ? `/${companyId}` : `/${companyId}/${item.id}`}
           key={item.id}
           onClick={() => {setActive(item.id); console.log(item.id); } }
           className={`w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors border ${

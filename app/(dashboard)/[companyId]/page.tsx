@@ -1,20 +1,27 @@
 'use client';
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import Button from "@/components/ui/button";
-import {chartData, kpis, notifications, services} from "@/constants";
+import {chartData, companies, kpis, notifications, services} from "@/constants";
 import Badge from "@/components/ui/badge";
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import { motion } from "framer-motion";
 import CompanyInfoCard from "@/components/CompanyInfoCard";
+import {useCompany} from "@/app/companyProvider";
 
 export default function Home() {
+  const companyId = useCompany().id;
+  const company = companies.find(c => c.id === Number(companyId));
+
+  if (!company) {
+    return "Неизвестная компания"
+  }
+
   return (
     <div className="space-y-6">
       <CompanyInfoCard
-        title="Барбершоп Центр"
-        address="ул. Ленина, д. 2"
-        description="Длинное описание про то, насколько хорош этот барбершоп,
-         еще длиннее, more length of text. Хороший барбершоп."
+        title={company.title}
+        address={company.address}
+        description={company.description}
       />
 
       {/* KPI */}
