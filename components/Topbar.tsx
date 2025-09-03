@@ -31,7 +31,7 @@ const Topbar = () => {
             {/* Company picker */}
             <div className="relative">
               <Button variant="soft" onClick={()=>setCompanyMenu(v=>!v)}>
-                <Building2 className="h-4 w-4"/> {currentCompany.name} <ChevronDown className="h-4 w-4"/>
+                <Building2 className="h-4 w-4"/> {currentCompany.title} <ChevronDown className="h-4 w-4"/>
               </Button>
               {companyMenu && (
                 <div className="absolute right-0 mt-2 w-80 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-lg p-2 z-50">
@@ -41,8 +41,8 @@ const Topbar = () => {
                       <button key={c.id} onClick={()=>{setSelectedCompanyId(c.id); setCompanyMenu(false);}} className={`w-full text-left rounded-lg px-3 py-2 flex items-start gap-2 hover:bg-neutral-50 dark:hover:bg-neutral-800 ${selectedCompanyId===c.id?"bg-neutral-100 dark:bg-neutral-800":""}`}>
                         <div className="mt-0.5"><Building2 className="h-4 w-4 text-neutral-500"/></div>
                         <div>
-                          <div className="font-medium flex items-center gap-2">{c.name} <span className="text-xs text-neutral-500 inline-flex items-center gap-1"><MapPin className="h-3 w-3"/>{c.city}</span></div>
-                          <div className="text-xs text-neutral-500 line-clamp-1">{c.desc}</div>
+                          <div className="font-medium flex items-center gap-2">{c.title} <span className="text-xs text-neutral-500 inline-flex items-center gap-1"><MapPin className="h-3 w-3"/>{c.city}</span></div>
+                          <div className="text-xs text-neutral-500 line-clamp-1">{c.description}</div>
                         </div>
                       </button>
                     ))}

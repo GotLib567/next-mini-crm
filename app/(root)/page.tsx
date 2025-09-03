@@ -5,28 +5,17 @@ import {chartData, kpis, notifications, services} from "@/constants";
 import Badge from "@/components/ui/badge";
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import { motion } from "framer-motion";
-import {Building2, PenLine} from "lucide-react";
+import CompanyInfoCard from "@/components/CompanyInfoCard";
 
 export default function Home() {
   return (
     <div className="space-y-6">
-      <Card>
-        <CardContent>
-          <div className="flex items-center justify-between">
-            <div className="flex flex-col items-center md:flex-row gap-2 md:gap-4">
-              <Building2 className="h-20 w-20" />
-              <div>
-                <div className="md:flex md:items-center md:gap-2">
-                  <div className="text-xl font-bold">Барбершоп Центр</div>
-                  <div className="text-sm text-neutral-500">Адрес: ул. Ленина, д. 2</div>
-                </div>
-                <div className="max-sm:mt-2 text-sm leading-4">Длинное описание про то, насколько хорош этот барбершоп, еще длиннее, more length of text. Хороший барбершоп.</div>
-              </div>
-            </div>
-            <Button className="max-sm:hidden"><PenLine /></Button>
-          </div>
-        </CardContent>
-      </Card>
+      <CompanyInfoCard
+        title="Барбершоп Центр"
+        address="ул. Ленина, д. 2"
+        description="Длинное описание про то, насколько хорош этот барбершоп,
+         еще длиннее, more length of text. Хороший барбершоп."
+      />
 
       {/* KPI */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
@@ -85,20 +74,26 @@ export default function Home() {
         </Card>
       </div>
 
-      {/* Low stock */}
+      {/* Nearest slots */}
       <Card>
-        <CardHeader title="Низкие остатки" subtitle="Материалы ниже порога" />
+        <CardHeader title="Ближайшие записи" subtitle="Записи за последние 7 дней" />
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {services.filter(s => s.stock < s.threshold).map((s, i) => (
-              <div key={i} className="flex items-center justify-between rounded-xl border border-neutral-200 dark:border-neutral-800 p-3">
-                <div>
-                  <div className="font-medium">{s.name}</div>
-                  <div className="text-xs text-neutral-500">Остаток: {s.stock} {s.unit} • Порог: {s.threshold}</div>
-                </div>
-                <Badge tone="warning">Пополнить</Badge>
+            <div className="flex items-center justify-between rounded-xl border border-neutral-200 dark:border-neutral-800 p-3">
+              <div>
+                <div className="font-medium">Антон</div>
+                <div className="text-xs text-neutral-500">Услуга: Стрижка • Время: 13:00</div>
               </div>
-            ))}
+              <Badge tone="warning">Отменить</Badge>
+            </div>
+
+            <div className="flex items-center justify-between rounded-xl border border-neutral-200 dark:border-neutral-800 p-3">
+              <div>
+                <div className="font-medium">Елена</div>
+                <div className="text-xs text-neutral-500">Услуга: Стрижка • Время: 11:00</div>
+              </div>
+              <Badge tone="warning">Отменить</Badge>
+            </div>
           </div>
         </CardContent>
       </Card>

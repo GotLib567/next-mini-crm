@@ -3,7 +3,7 @@ const Table = ({ columns = [], rows = [], renderRow }) => (
     <table className="w-full text-sm">
       <thead className="bg-neutral-50 dark:bg-neutral-900/50">
       <tr>
-        {columns.map((c, i) => (
+        {columns.map((c: { className?: string; title: string }, i) => (
           <th key={i} className={`px-4 py-3 text-left font-medium text-neutral-600 dark:text-neutral-300 ${c.className || ""}`}>{c.title}</th>
         ))}
       </tr>
