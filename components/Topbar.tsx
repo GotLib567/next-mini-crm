@@ -52,7 +52,6 @@ const Topbar = () => {
                 <Input icon={Search} placeholder="Поиск (Ctrl/⌘+K)…" />
               </div>
 
-              {/* ВАЖНО: этот блок — прямой ребёнок flex-контейнера */}
               <div className="ml-auto flex items-center gap-2">
                 <CompanyPicker
                   currentCompany={currentCompany}

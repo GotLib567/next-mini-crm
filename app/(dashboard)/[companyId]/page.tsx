@@ -84,7 +84,7 @@ export default function Home() {
       {/* Nearest slots */}
       <Card>
         <CardHeader title="Ближайшие записи" subtitle="Записи за последние 7 дней" />
-        <CardContent>
+        <CardContent className="pt-0">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex items-center justify-between rounded-xl border border-neutral-200 dark:border-neutral-800 p-3">
               <div>

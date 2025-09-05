@@ -39,7 +39,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       </div>
 
       {/* Footer */}
-      <div className="border-t border-neutral-200 dark:border-neutral-800 py-6 text-center text-xs text-neutral-500">v1 • Дизайн‑прототип без бэкенда</div>
+      <div className="border-t border-neutral-200 dark:border-neutral-800 py-6 text-center text-xs text-neutral-500">v1 • REST API</div>
     </div>
   );
 };
